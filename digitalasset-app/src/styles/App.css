@@ -1,0 +1,90 @@
+/* App specific styles */
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--dark-bg);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(138, 43, 226, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(0, 180, 216, 0.05) 0%,
+      transparent 50%
+    );
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  padding-bottom: 40px;
+}
+
+.main-content {
+  padding-top: 24px;
+}
+
+/* Background effects */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, var(--dark-bg));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hash display for asset details */
+.hash-text {
+  font-family: "Roboto Mono", monospace;
+  word-break: break-all;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Section heading styles */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-purple {
+  background-color: rgba(138, 43, 226, 0.2);
+  color: var(--primary-light);
+}
+
+/* Asset preview images */
+.asset-preview {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .mobile-full {
+    width: 100%;
+  }
+}
