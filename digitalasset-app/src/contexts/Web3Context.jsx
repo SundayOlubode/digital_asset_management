@@ -17,6 +17,7 @@ const ABI = contractABI;
 
 // Contract address - your deployed contract address
 const CONTRACT_ADDRESS = import.meta.env.CONTRACT_ADDRESS;
+console.log("Contract address:", CONTRACT_ADDRESS);
 
 // Define the provider component
 function Web3Provider({ children }) {
