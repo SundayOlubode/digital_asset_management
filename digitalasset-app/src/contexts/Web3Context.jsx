@@ -47,13 +47,26 @@ function Web3Provider({ children }) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         setProvider(provider);
 
-        // Show currently selected account if already connected
+        // Replace with:
         try {
           const accounts = await provider.listAccounts();
           if (accounts.length > 0) {
             setAccount(accounts[0]);
             setIsConnected(true);
             console.log("Already connected to account:", accounts[0]);
+
+            // Initialize contract first to make sure it's available
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
+            setContract(contract);
+            console.log("Contract initialized successfully");
+
+            // Load user assets after wallet is detected as connected
+            setTimeout(() => {
+              if (contract) {
+                loadUserAssets(accounts[0], contract);
+              }
+            }, 500);
           }
         } catch (accountError) {
           console.error("Error checking existing accounts:", accountError);
