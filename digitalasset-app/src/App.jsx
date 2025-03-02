@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 import Header from "./components/Header";
 import Background from "./components/Background";
 import ConnectWallet from "./components/ConnectWallet";
@@ -31,18 +28,7 @@ function App() {
             </div>
           </main>
         </div>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
+        {/* Removed ToastContainer from here - it's now in main.jsx */}
       </div>
     </Web3Provider>
   );

@@ -11,6 +11,16 @@ const ConnectWallet = () => {
     )}`;
   };
 
+  // Safe connect function with error handling
+  const handleConnect = async () => {
+    try {
+      await connectWallet();
+    } catch (error) {
+      console.error("Error in connect button handler:", error);
+      // The error should already be handled in the context, but this prevents UI crashes
+    }
+  };
+
   return (
     <div className="wallet-card card">
       <div className="wallet-info">
@@ -28,7 +38,7 @@ const ConnectWallet = () => {
       </div>
 
       <button
-        onClick={connectWallet}
+        onClick={handleConnect}
         disabled={loading || isConnected}
         className={`btn btn-primary ${
           loading || isConnected ? "opacity-50" : ""
