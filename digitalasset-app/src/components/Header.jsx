@@ -38,6 +38,7 @@ const Header = ({ setActiveTab, activeTab }) => {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
+                data-tab={tab.id} // Add this data-tab attribute
                 onClick={() => setActiveTab(tab.id)}
                 className={`nav-tab ${activeTab === tab.id ? "active" : ""}`}
               >

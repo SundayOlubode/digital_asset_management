@@ -89,19 +89,14 @@ const AssetCard = ({ asset }) => {
             data-id={asset.id}
             className="asset-action-btn btn btn-primary"
             onClick={() => {
+              // Use window.localStorage to pass the assetId
+              localStorage.setItem("selectedAssetId", asset.id);
               // Find the transfer tab button and click it
               const transferTab = document.querySelector(
                 'button[data-tab="transfer"]',
               );
               if (transferTab) {
                 transferTab.click();
-                // Set the asset ID in the transfer form
-                setTimeout(() => {
-                  const assetIdInput = document.getElementById("assetId");
-                  if (assetIdInput) {
-                    assetIdInput.value = asset.id;
-                  }
-                }, 100);
               }
             }}
           >

@@ -78,12 +78,23 @@ const TransferForm = () => {
 
   // Initialize with URL parameters if any
   useEffect(() => {
+    // Check URL parameters first
     const urlParams = new URLSearchParams(window.location.search);
     const assetIdParam = urlParams.get("assetId");
 
-    if (assetIdParam) {
-      setFormData({ ...formData, assetId: assetIdParam });
-      fetchAssetDetails(assetIdParam);
+    // Then check localStorage for a selected asset
+    const selectedAssetId = localStorage.getItem("selectedAssetId");
+
+    // URL param takes precedence, otherwise use localStorage
+    const assetId = assetIdParam || selectedAssetId;
+
+    if (assetId) {
+      setFormData((prevData) => ({ ...prevData, assetId }));
+      fetchAssetDetails(assetId);
+      // Clear localStorage after reading
+      if (selectedAssetId) {
+        localStorage.removeItem("selectedAssetId");
+      }
     }
   }, []);
 

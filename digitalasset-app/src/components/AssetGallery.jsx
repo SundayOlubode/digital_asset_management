@@ -11,7 +11,7 @@ const AssetGallery = () => {
     if (isConnected && account && contract) {
       loadUserAssets(account, contract);
     }
-  }, [isConnected, account, contract]);
+  }, [isConnected, account, contract, loadUserAssets]);
 
   if (!isConnected) {
     return (
